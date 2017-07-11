@@ -25,17 +25,18 @@ Tuning ANN efficiently can provide us the results much better than CV TEchnique.
 Code are segmented as follows:
 
 1. Training Part :
-
     **train.py**
     
-2. TEsting Part :
-
+2. Testing Part :
     __test.py__
 
 `Our Model has 3 Layers
-Containg
+Containing
+
  1 Input Layer -> 100*100 U
+ 
  1 Hidden Layer -> 300 HU
+ 
  1 Output Layer -> 2 U`
 
 
@@ -46,11 +47,11 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 
 Run as :
-> 1. python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'
+**python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'**
 
 `and result get stored default in 'tmp/blur_clear/' Folder.`
  
 
-> 2. python predict.py
+**python predict.py**
 
-`to predict the results.
+`to predict the results.'
