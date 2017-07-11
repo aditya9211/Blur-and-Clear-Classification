@@ -26,11 +26,10 @@ Code are segmented as follows:
 
 1. Training Part :
 
-    - train.py
-  
+    train.pyjjjj
 2. TEsting Part :
 
-    - test.py
+    test.py
 
 Our Model has 3 Layers
 Containg
@@ -39,7 +38,7 @@ Containg
  1 Output Layer -> 2 U
 
 
-We have used the Backprop Algorithm for Training using the SGD Optimizer with momentum .
+**We have used the Backprop Algorithm for Training using the SGD Optimizer with momentum .
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and doing median filtering to filter the noise in Images.
 Need the Images that are clear in separate folder and one with blurred in other folder.Because it is a supervised Learning.
 
