@@ -19,36 +19,36 @@ Tuning it to very efficiently can provide the results much better than CV TEchni
 
 
 ## Here the Dependencies Required for Running the Code:
-1. Python 2.7xx
-2. Numpy , scipy, matplotlib Library Installed
+*1. Python 2.7xx
+2. Numpy , scipy, matplotlib Library Installed 
 
 Code are segmented as follows:
 1. Training Part :
 
-    ** train.py
-  
+    **train.py
+  
 2. TEsting Part :
 
-    ** test.py
-  
+    **test.py
+  
 Our Model has 3 Layers
 Containg
-** 1 Input Layer -> 10001 U
-** 1 Hidden Layer -> 300 HU
-** 1 Output Layer -> 2 U
+ **1 Input Layer -> 10001 U
+ 1 Hidden Layer -> 300 HU
+ 1 Output Layer -> 2 U
+
 
 We have used the Backprop Algorithm for Training using the SGD Optimizer with momentum .
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and doing median filtering to filter the noise in Images.
-
 Need the Images that are clear in separate folder and one with blurred in other folder.Because it is a supervised Learning.
 
 
 Run as :
 > 1. python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'
 
-and result get stored default in 'tmp/blur_clear/' Folder.
+*and result get stored default in 'tmp/blur_clear/' Folder.
  
 
 > 2. python predict.py
 
-to predict the results.
+*to predict the results.
