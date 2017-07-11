@@ -20,7 +20,7 @@ Tuning ANN efficiently can provide us the results much better than CV TEchnique.
 
 ## Here the Dependencies Required for Running the Code:
 1. Python 2.7xx
-2. Numpy , scipy, matplotlib Library Installed 
+2. Numpy, scipy, sklearn, matplotlib Library Installed 
 
 Code are segmented as follows:
 
