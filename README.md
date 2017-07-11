@@ -24,7 +24,7 @@ Here the Dependencies Required for Running the Code:
 
 Code are segmented as follows:
 1. Training Part 
-  train.py
+    train.py
   
 2. TEsting Part
     test.py
@@ -36,3 +36,14 @@ Containg
 1 Output Layer -> 2 U
 We have used the Backprop Algorithm for Training using the SGD Optimizer with momentum .
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and doing median filtering to filter the noise in Images.
+
+Need the Images that are clear in separate folder and one with blurred in other folder.Because it is a supervised Learning.
+
+
+Run as :
+python train.py --good_path '/home/......' --bad_path '/home/.......'
+and result get stored default in 'tmp/blur_clear/' Folder.
+
+then Execute the : 
+python predict.py
+to predict the results.
