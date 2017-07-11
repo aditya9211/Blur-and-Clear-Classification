@@ -43,12 +43,11 @@ Need the Images that are clear in separate folder and one with blurred in other 
 
 
 Run as :
-python train.py --good_path '/home/......' --bad_path '/home/.......'
+1. python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'
 
 and result get stored default in 'tmp/blur_clear/' Folder.
+ 
 
-then Execute the : 
-
-python predict.py
+2. python predict.py
 
 to predict the results.
