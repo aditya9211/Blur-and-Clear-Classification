@@ -3,8 +3,7 @@ import glob
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from sklearn.cross_validation import train_test_split
-from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
 import scipy.misc as ms
 import scipy.ndimage as nd
 import argparse
@@ -119,30 +118,19 @@ def derivative(a,func='sig'):
     
     return a*(1-a)
 
-## Standard Scaler in Python for Normalizing the batch in mini-batch SGD
-def batch_normalization(batchX):
-    b_mean = np.mean(batchX[:,1:],axis=1)[:,None]
-    b_std = np.std(batchX[:,1:],axis=1)[:,None]
-    batchX[:,1:] = (batchX[:,1:] - b_mean)/b_std
-    return batchX
-
 ## Core of ANN, BackProp..
 def back_propagate(X1, y1, theta1, theta2, X, y, alpha, lambdaa, nclass,  max_iter
                    , act, batch_size=32):
     parameters = {}
     gamma = 0.9 ## Momentum Factor
     dtheta1 , dtheta2 = 0.0, 0.0
-    rate = 0
     y_new = output_encoding(y, nclass) ## Convert the value of labels to dimension of classes
-    np.random.seed(10)
-    X, y, y_new = random_shuffle(X,y,y_new)
     theta1_up, theta2_up = np.zeros((theta1.shape[0],theta1.shape[1])), np.zeros((theta2.shape[0],theta2.shape[1]))
     cost_new = []
     err = 100.0
     for j in np.arange(0,max_iter):
         k = 0
         print
-        rate = rate + 1
         print 'Overall Min. Error rate : ' + str(err)
         print
 		
@@ -180,7 +168,6 @@ def back_propagate(X1, y1, theta1, theta2, X, y, alpha, lambdaa, nclass,  max_it
 				## Error Updation if LEss Error is Discovered
                 if(error < err):
                     err = error
-#                    rate = 0
                     theta1_up = theta1
                     theta2_up = theta2
                 
@@ -225,15 +212,6 @@ def output_encoding(y, nclass):
         y_new[c][pos] = 1 
     return y_new
    
-## Shuffling the array of images and labels as well
-def random_shuffle(X, y, y_new, seed=10):
-    np.random.seed(seed)
-    sample = np.random.choice(X.shape[0],X.shape[0])
-    y = y[sample]
-    X = X[sample,:]
-    y_new = y_new[:,sample]
-    return  X, y, y_new
-
 ## Input Layer -> 10001 U
 ## 1 Hidden Layers -> 300 HU 
 ## 1 Output Layer -> 10 Neurons
@@ -254,10 +232,9 @@ X, y = data_preprocess(path1, path2)
 
 ## Resizing the feature space for easier to handle
 X = resize(X)
-X, y = shuffle(X, y, random_state=0) ## Random Shuffle
 
 ## Splitting the Data for Training and Testing Purpose
-X, X1, y, y1 = train_test_split(X, y, test_size=0.3)
+X, X1, y, y1 = train_test_split(X, y, test_size=0.3, random_state = 10)
 
 ## Creating the Temp Folder for Storing the Result 
 filename = "/tmp/blur_clear/"
@@ -280,14 +257,15 @@ X1 = X1/255.0
 X1 = np.insert(X1, 0, 1, axis=1) ## Adding the Biases
 
 ## Parameters for Model
-## May Used for Cal No Of Neuron as hyper-parameters to Good value
-nof_neuron = X.shape[0]/(2*(X.shape[1]+10))
-theta = NN_Model([X.shape[1],300,2])
-max_iter = 20
+max_iter = 50
 alpha = 0.001
 lambdaa = 0.0007
 nclass = 2
 act = 'sig'
+			
+## May Used for Cal No Of Neuron as hyper-parameters to Good value
+nof_neuron = X.shape[0]/(2*(X.shape[1]+10))
+theta = NN_Model([X.shape[1],300,nclass])
 print "BAckPROP ................."
 print
 params = back_propagate(X1, y1, theta['Theta1'], theta['Theta2'], X, y, alpha, lambdaa, nclass,
