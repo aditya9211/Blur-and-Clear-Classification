@@ -23,10 +23,12 @@ Here the Dependencies Required for Running the Code:
 2. Numpy , scipy, matplotlib Library Installed
 
 Code are segmented as follows:
-1. Training Part 
+1. Training Part :
+
     train.py
   
-2. TEsting Part
+2. TEsting Part :
+
     test.py
   
 Our Model has 3 Layers
@@ -42,8 +44,11 @@ Need the Images that are clear in separate folder and one with blurred in other 
 
 Run as :
 python train.py --good_path '/home/......' --bad_path '/home/.......'
+
 and result get stored default in 'tmp/blur_clear/' Folder.
 
 then Execute the : 
+
 python predict.py
+
 to predict the results.
