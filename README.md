@@ -26,10 +26,11 @@ Code are segmented as follows:
 
 1. Training Part :
 
-    train.pyjjjj
+    **train.py**
+    
 2. TEsting Part :
 
-    test.py
+    __test.py__
 
 Our Model has 3 Layers
 Containg
