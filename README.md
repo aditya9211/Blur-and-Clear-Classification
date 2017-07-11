@@ -19,21 +19,21 @@ Tuning it to very efficiently can provide the results much better than CV TEchni
 
 
 ## Here the Dependencies Required for Running the Code:
-*1. Python 2.7xx
+1. Python 2.7xx
 2. Numpy , scipy, matplotlib Library Installed 
 
 Code are segmented as follows:
 1. Training Part :
 
-    **train.py
+    'train.py'
   
 2. TEsting Part :
 
-    **test.py
+    'test.py'
   
 Our Model has 3 Layers
 Containg
- **1 Input Layer -> 10001 U
+ 1 Input Layer -> 10001 U
  1 Hidden Layer -> 300 HU
  1 Output Layer -> 2 U
 
