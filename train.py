@@ -8,12 +8,12 @@ import scipy.misc as ms
 import scipy.ndimage as nd
 import argparse
 
-def resize(X, w=100, h=100):
+def resize(X, orig_reso, w=100, h=100):
 	## Resize the Image to Default 100 x 100 pixels Image
     r,c = w,h
     X_new = np.zeros((X.shape[0],r*c))
     for i in range(X.shape[0]):
-        X_new[i,:] = ms.imresize(X[i,:].reshape(320,240),(r,c),interp='cubic').flatten()
+        X_new[i,:] = ms.imresize(X[i,:].reshape(orig_reso[0],orig_reso[1]),(r,c),interp='cubic').flatten()
     return X_new
 
 def NN_Model(neuron,initialize=False):
@@ -26,20 +26,20 @@ def NN_Model(neuron,initialize=False):
     theta2 = 2.0*np.random.random((neuron[-1],neuron[1]+1))*r1 - 1*r1
     return {'Theta1':theta1, 'Theta2':theta2}
     
-def data_preprocess(path1, path2):
+def data_preprocess(path1, path2, orig_reso, no_images):
  print 'Pre-Processsing the Data...........'
  path1 = path1 + str("/*.jpg")
  path2 = path2 + str("/*.jpg")
 
  ## Converting the Images in flatten numpy array format 
  i=0
- X2 = np.zeros((166,320*240))
+ X2 = np.zeros((no_images[0],orig_reso[0]*orig_reso[1]))
  for filename in glob.glob(path1):
      inp_image = ms.imread(filename, mode='L')
      X2[i] = inp_image.flatten()
      i = i + 1 
  i=0
- X1 = np.zeros((165,320*240))
+ X1 = np.zeros((no_images[1],orig_reso[0]*orig_reso[1]))
  for filename in glob.glob(path2):
      inp_image = ms.imread(filename, mode='L')
      X1[i] = inp_image.flatten()
@@ -47,7 +47,7 @@ def data_preprocess(path1, path2):
   
  ## Concatenate the Array of Images that are Good and Bad
  X = np.concatenate((X1, X2))  
- y = np.concatenate((np.zeros(165),np.ones(166)))
+ y = np.concatenate((np.zeros(no_images[1]),np.ones(no_images[0])))
  
  ## Filtering the Image to Reduce the Noise in Image
  X = nd.median_filter(X,3)
@@ -226,12 +226,18 @@ ap.add_argument("-path2", "--bad_path", required=True, help="path to bad images 
 args = vars(ap.parse_args())
 path1 = args["good_path"]
 path2 = args["bad_path"]
-
+			
+## Orignal Resolution Of Image
+orig_reso = (320,240)
+			
+## No of Images inn each Folder
+no_images = (166,165)
+			
 ## Convret the Images too Corresponding Numpy array 
-X, y = data_preprocess(path1, path2)
-
+X, y = data_preprocess(path1, path2, orig_reso, no_images)
+			
 ## Resizing the feature space for easier to handle
-X = resize(X)
+X = resize(X, orig_reso)
 
 ## Splitting the Data for Training and Testing Purpose
 X, X1, y, y1 = train_test_split(X, y, test_size=0.3, random_state = 10)
