@@ -47,11 +47,12 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 
 Run as :
+
 **python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'**
 
-`and result get stored default in 'tmp/blur_clear/' Folder.`
+       `and result get stored default in 'tmp/blur_clear/' Folder.`
  
 
 **python predict.py**
 
-`to predict the results.`
+       `to predict the results.`
