@@ -30,15 +30,15 @@ Code are segmented as follows:
 2. Testing Part :
     __test.py__
 
-`Our Model has 3 Layers
-Containing
-
+`Our Model has 3 Layers`
+`Containing`
+```
  1 Input Layer -> 100*100 U
  
  1 Hidden Layer -> 300 HU
  
- 1 Output Layer -> 2 U`
-
+ 1 Output Layer -> 2 U
+```
 
 **We have used the Backprop Algorithm for Training using the SGD Optimizer with Momentum .
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filtering to filter the noise in Images.**
