@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import argparse
 
 ## Sigmoid activation Function
 def sigmoid(X):
@@ -31,15 +32,25 @@ def validate(theta1, theta2, X, act = 'sig'):
     accu_matrix = np.argmax(aa2,axis=0) 
     return accu_matrix
 
-filename = "/tmp/blur_clear"
+## construct the argument parse and parse the arguments
+ap = argparse.ArgumentParser()
+ap.add_argument("-model_dir", "--model_dir", required=False, help="path to model directory")
+args = vars(ap.parse_args())
+
+## Retrieving the Temp Folder for Result 
+if args["model_dir"]:
+  filename = args["model_dir"]+str("/")
+else:
+  filename = "/tmp/blur_clear/"
+
 if not os.path.exists(os.path.dirname(filename)):
 	print "No dir exists" + filename
 	exit()
 
 ## Extracting the Info from Training Set Results from tmp dir
-params = np.load("/tmp/blur_clear/result.npy")
-test_images = np.load("/tmp/blur_clear/test_images.npy")
-test_labels = np.load("/tmp/blur_clear/test_labels.npy")
+params = np.load(filename + str("/result.npy"))
+test_images = np.load(filename + str("/test_images.npy"))
+test_labels = np.load(filename + str("/test_labels.npy"))
 
 ## Rescalling the Inputs
 test_images = test_images/255.0
