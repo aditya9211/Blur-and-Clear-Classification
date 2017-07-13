@@ -26,20 +26,26 @@ def NN_Model(neuron,initialize=False):
     theta2 = 2.0*np.random.random((neuron[-1],neuron[1]+1))*r1 - 1*r1
     return {'Theta1':theta1, 'Theta2':theta2}
     
-def data_preprocess(path1, path2, orig_reso, no_images):
+def data_preprocess(path1, path2, orig_reso):
  print 'Pre-Processsing the Data...........'
  path1 = path1 + str("/*.jpg")
  path2 = path2 + str("/*.jpg")
+ ## Contents counts in a Dir
+ files = glob.glob(path1)
+ good_count = len(files)
 
+ files = glob.glob(path2)
+ bad_count = len(files)
+	
  ## Converting the Images in flatten numpy array format 
  i=0
- X2 = np.zeros((no_images[0],orig_reso[0]*orig_reso[1]))
+ X2 = np.zeros((good_count,orig_reso[0]*orig_reso[1]))
  for filename in glob.glob(path1):
      inp_image = ms.imread(filename, mode='L')
      X2[i] = inp_image.flatten()
      i = i + 1 
  i=0
- X1 = np.zeros((no_images[1],orig_reso[0]*orig_reso[1]))
+ X1 = np.zeros((bad_count,orig_reso[0]*orig_reso[1]))
  for filename in glob.glob(path2):
      inp_image = ms.imread(filename, mode='L')
      X1[i] = inp_image.flatten()
@@ -47,7 +53,7 @@ def data_preprocess(path1, path2, orig_reso, no_images):
   
  ## Concatenate the Array of Images that are Good and Bad
  X = np.concatenate((X1, X2))  
- y = np.concatenate((np.zeros(no_images[1]),np.ones(no_images[0])))
+ y = np.concatenate((np.zeros(bad_count),np.ones(good_count)))
  
  ## Filtering the Image to Reduce the Noise in Image
  X = nd.median_filter(X,3)
@@ -223,6 +229,7 @@ np.random.seed(10)
 ap = argparse.ArgumentParser()
 ap.add_argument("-path1", "--good_path", required=True, help="path to good images directory")
 ap.add_argument("-path2", "--bad_path", required=True, help="path to bad images directory")
+ap.add_argument("-model_dir", "--model_dir", required=False, help="path to model directory")
 args = vars(ap.parse_args())
 path1 = args["good_path"]
 path2 = args["bad_path"]
@@ -230,11 +237,8 @@ path2 = args["bad_path"]
 ## Orignal Resolution Of Image
 orig_reso = (320,240)
 			
-## No of Images inn each Folder
-no_images = (166,165)
-			
 ## Convret the Images too Corresponding Numpy array 
-X, y = data_preprocess(path1, path2, orig_reso, no_images)
+X, y = data_preprocess(path1, path2, orig_reso)
 			
 ## Resizing the feature space for easier to handle
 X = resize(X, orig_reso)
@@ -243,16 +247,20 @@ X = resize(X, orig_reso)
 X, X1, y, y1 = train_test_split(X, y, test_size=0.3, random_state = 10)
 
 ## Creating the Temp Folder for Storing the Result 
-filename = "/tmp/blur_clear/"
+if args["model_dir"]:
+	filename = args["model_dir"]+str("/")
+else:
+  filename = "/tmp/blur_clear/"
+
 if not os.path.exists(os.path.dirname(filename)):
 	print 'Creating Dir ' + filename + '....'
 	os.makedirs(os.path.dirname(filename))
 
 ## Storing the Array required for predicting Purposes
-np.save("/tmp/blur_clear/train_images.npy",X)
-np.save("/tmp/blur_clear/train_labels.npy",y)
-np.save("/tmp/blur_clear/test_images.npy",X1)
-np.save("/tmp/blur_clear/test_labels.npy",y1)
+np.save(filename + str("/train_images.npy"),X)
+np.save(filename + str("/train_labels.npy"),y)
+np.save(filename + str("/test_images.npy"),X1)
+np.save(filename + str("/test_labels.npy"),y1)
 
 ## Rescalling the Training Dataset
 X = X/255.0
@@ -287,7 +295,7 @@ print 'Accuracy :' + str(accuracy) + ' '
 
 ## Storing the Results in tmp directory 
 print 'Saving Results...............'
-np.save("/tmp/blur_clear/result.npy",{'Theta1':params['Theta1'],'Theta2':params['Theta2']})
+np.save(filename + str("/result.npy"),{'Theta1':params['Theta1'],'Theta2':params['Theta2']})
 
 ## Plotting the Curve
 show_plot(params['Loss'])
