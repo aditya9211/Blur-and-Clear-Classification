@@ -274,7 +274,7 @@ X1 = np.insert(X1, 0, 1, axis=1) ## Adding the Biases
 max_iter = 50
 alpha = 0.001
 lambdaa = 0.0007
-nclass = 2
+nclass = np.unique(y).shape[0]
 act = 'sig'
 			
 ## May Used for Cal No Of Neuron as hyper-parameters to Good value
