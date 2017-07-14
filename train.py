@@ -213,7 +213,7 @@ def show_plot(cost):
 ## same as one_hot_encoding()
 def output_encoding(y, nclass):
     y_new = np.zeros((nclass,y.shape[0]))
-    for  c in np.arange(0,nclass:
+    for  c in np.arange(0,nclass):
         pos = np.where(y==c)
         y_new[c][pos] = 1 
     return y_new
