@@ -47,7 +47,9 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
  Because it is a training phase of Supervised Learning `
 
 
-**Run as :**
+
+
+*Run as :*
 
 `python train.py  --good_path  '/home/......'  --bad_path  '/home/.......'`
 
