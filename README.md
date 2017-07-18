@@ -43,7 +43,8 @@ Code are segmented as follows:
 **We have used the Backprop Algorithm for Training using the SGD Optimizer with Momentum .
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filtering to filter the noise in Images.**
 
-`Need the Images that are clear in separate folder and one with blurred in other folder.Because it is a supervised Learning`
+`Need the Images that are clear in separate folder and one with blurred in other folder.
+ Because it is a training phase of Supervised Learning `
 
 
 Run as :
