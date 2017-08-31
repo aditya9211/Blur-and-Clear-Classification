@@ -6,7 +6,7 @@
 In day to day Life we encounter the poor images clicked from our Camera due to poor focus, motion of objects in frame
 or handshaking motion while capturing the Images.
 
-As a CS Student we wnat to filter out the the Clear and Blurred Images to delete thee uneccessary Images.
+As a CS Student we wants to filter out the Clear and Blurred Images to delete the uneccessary Images.
 
 `Blur is typically the thing which suppress the high frequency of our Images, therefore can be detected by using various low-pass filter
 eg. Laplacaian Filter. `
@@ -14,7 +14,7 @@ eg. Laplacaian Filter. `
 As the Now the era of Deep Conv Nets has supressed the Standard Computer Vision Techniques, 
 Thus we are focussing on the root of it which is Neural Nets.
 `
-Neural Nets very Quickly learn the complex features , therefore can be used much easily then std. CV technique.
+Neural Nets learn very Quickly the complex features , therefore can be used much easily then std. CV technique.
 Tuning ANN efficiently can provide us the results much better than CV TEchnique.`
 
 
@@ -41,7 +41,7 @@ Code are segmented as follows:
 ```
 
 **We have used the Backprop Algorithm for Training using the SGD Optimizer with Momentum .
-Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filtering to filter the noise in Images.**
+Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filtering to filter out the noise from Images.**
 
 `Need the Images that are clear in separate folder and one with blurred in other folder.
  Because it is a training phase of Supervised Learning `
