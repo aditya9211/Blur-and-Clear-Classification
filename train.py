@@ -106,7 +106,7 @@ def cost(a4, y_new, theta, lambdaa):
     reg = (lambdaa/2.0)*(np.sum(theta['Theta1'][1:,:]**2)
 						+ np.sum(theta['Theta2'][1:,:]**2))
     reg = reg/float(y_new.shape[0])
-    first = (-1.0) * ( y_new*a4 + (1-y_new)*np.log(1 - a4))
+    first = (-1.0) * ( y_new*np.log(a4) + (1-y_new)*np.log(1 - a4))
     return (np.mean(first) + reg)
 
 ## Derivative of Correspnding Activation Function
