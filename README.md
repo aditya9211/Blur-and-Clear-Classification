@@ -58,4 +58,4 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 `python test.py`
 
-       `to predict the results.`
+       `to test the results.`
