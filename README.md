@@ -56,6 +56,6 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
        `and result get stored default in 'tmp/blur_clear/' Folder.`
  
 
-`python predict.py`
+`python test.py`
 
        `to predict the results.`
