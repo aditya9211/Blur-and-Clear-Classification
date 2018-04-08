@@ -14,7 +14,6 @@ so we need some smart way to delete the uneccessary Images.
 ## LoG Filter
 I also applied the Laplacian of gausssian(LoG) filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to differentiate images; despite that results were not fascinating.
-
 Used variance of LoG filter mentioned in:  https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/
 
 Some of its discussions
@@ -38,7 +37,7 @@ Thus I focussed on the root of it which is Neural Nets.`
 `Neural Nets learn very Quickly the complex features, therefore can be used much easily then std. CV technique.
 Tuning ANN efficiently can provide me the results much better than CV TEchnique.`
 
-### Neural Network Model
+## Neural Network Model
 `Model has 3 Layers`
 `Containing`
 ```
