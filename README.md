@@ -33,11 +33,10 @@ Repo which implemented LoG filter in Python:
 https://github.com/WillBrennan/BlurDetection2
 
 
-`As the Now the era of Deep Conv Nets has supressed the Standard Computer Vision Techniques, 
+```As the Now the era of Deep Conv Nets has supressed the Standard Computer Vision Techniques, 
 Thus I focussed on the root of it which is Neural Nets.
-
 Neural Nets learn very Quickly the complex features, therefore can be used much easily then std. CV technique.
-Tuning ANN efficiently can provide me the results much better than CV TEchnique.`
+Tuning ANN efficiently can provide me the results much better than CV TEchnique.```
 
 ### Neural Network Model
 `Model has 3 Layers`
