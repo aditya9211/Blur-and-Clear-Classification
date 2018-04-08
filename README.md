@@ -53,8 +53,7 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 
 # Quick Start
-```Need the Images that are clear in separate folder and one with blurred in other folder.`
-
+```Need the Images that are clear in separate folder and one with blurred in other folder.
 # Clone the repo
 git clone https://github.com/aditya9211/Blur-and-Clear-Classification.git
 # Install the requirements
