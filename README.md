@@ -18,11 +18,13 @@ exact value of threshold needed to seggregate; despite results were also not fas
 **Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/**
 
 Some of its discussions 
+
 https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image-is-blurry
 
 https://stackoverflow.com/questions/5180327/detection-of-blur-in-images-video-sequences
 
 LoG Ref: 
+
 http://academic.mu.edu/phys/matthysd/web226/Lab02.htm
 
 http://aishack.in/tutorials/sift-scale-invariant-feature-transform-log-approximation/
@@ -47,28 +49,28 @@ Code are segmented as follows:
 
 1. Training Part :
 
-    **train.py**
+	__train.py__
     
  	`which train the neural network with given images
  	and stores the trained parameters and splitted train, test set to disk `
     
 2. Testing Part :
 
-    __test.py__
-    
+	__test.py__
+   
  	`test the neural network with test data
  	stored by train.py `
 
 3. Predict Part :
 
-    __predict.py__
+	__predict.py__
     
 	`predict the label of images(Good/Bad) 
 	provided by argument while calling`
 
 4. Config File :
 
-    __config.py__
+	__config.py__
     
 	`contains list of constanst used by files
 	or hyper-parameters which can be changed
@@ -76,10 +78,10 @@ Code are segmented as follows:
 	
 5. Utiltities Part :
 
-    __utils.py__
+	__utils.py__
     
-    	`helper functions or common function among used in train, test
-	and predict`
+    	`helper functions or common function among used in train, test and predict`
+	
 
 `Model has 3 Layers`
 `Containing`
