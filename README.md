@@ -11,9 +11,12 @@ eg. Laplacaian Filter.`
 As a smart person(myself a CS guy) we doesn't want to manually filter out the Clear and Blurred Images,
 so we need some smart way to delete the uneccessary Images.
 
+## LoG Filter
 I also applied the Laplacian of gausssian(LoG) filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to differentiate images; despite that results were not fascinating.
+
 **Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/**
+
 Some of its discussions
 
 https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image-is-blurry
@@ -21,6 +24,7 @@ https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image
 https://stackoverflow.com/questions/5180327/detection-of-blur-in-images-video-sequences
 
 LoG Ref: 
+
 http://academic.mu.edu/phys/matthysd/web226/Lab02.htm
 
 http://aishack.in/tutorials/sift-scale-invariant-feature-transform-log-approximation/
@@ -49,7 +53,7 @@ Tuning ANN efficiently can provide me the results much better than CV TEchnique.
 Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filtering to filter out the noise from Images.**
 
 
-## Quick Start
+# Quick Start
 `Need the Images that are clear in separate folder and one with blurred in other folder.`
 ```
 # Clone the repo
@@ -101,5 +105,5 @@ Code are segmented as follows:
 
 	__utils.py__
     
-    	`helper functions or common function among used in train, test and predict`
+    	`helper functions or common function among used in train/test and predict`
 	
