@@ -14,9 +14,10 @@ so we need some smart way to delete the uneccessary Images.
 
 I also applied the Laplacian of gausssian filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to seggregate; despite results were also not fascinating.
-Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/
+**Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/**
 
-Some of its discussions https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image-is-blurry
+Some of its discussions 
+https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image-is-blurry
 https://stackoverflow.com/questions/5180327/detection-of-blur-in-images-video-sequences
 
 LoG Ref: 
@@ -29,8 +30,8 @@ https://github.com/WillBrennan/BlurDetection2
 
 As the Now the era of Deep Conv Nets has supressed the Standard Computer Vision Techniques, 
 Thus I focussed on the root of it which is Neural Nets.
-`
-Neural Nets learn very Quickly the complex features, therefore can be used much easily then std. CV technique.
+
+`Neural Nets learn very Quickly the complex features, therefore can be used much easily then std. CV technique.
 Tuning ANN efficiently can provide me the results much better than CV TEchnique.`
 
 
@@ -44,17 +45,28 @@ Code are segmented as follows:
 1. Training Part :
     **train.py**
  	which train the neural network with given images
- 	and stores the parameters to disk 
+ 	and stores the trained parameters and splitted train, test set to disk 
     
 2. Testing Part :
     __test.py__
- 	test the neural network with images
+ 	test the neural network with test data
  	stored by train.py 
 
-3. Predict Part
-	__predict.py__
-	predict the label of images(Good/Bad) provided by argument
+3. Predict Part :
+    __predict.py__
+	predict the label of images(Good/Bad) 
+	provided by argument while calling
 
+4. Config File :
+    __config.py__
+	contains list of constanst used by files
+	or hyper-parameters which can be changed
+	byediting this file
+	
+5. Utiltities Part :
+    __utils.py__
+    	helper functions or coomon function among used in train, test
+	and predict
 
 `Model has 3 Layers`
 `Containing`
@@ -87,4 +99,5 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
        `to test the results and gives the accuracy score`
 
 `python predict.py --img '/home/...../..jpg'`
-		`to predict the labels of given images`
+
+	`to predict the labels of given images`
