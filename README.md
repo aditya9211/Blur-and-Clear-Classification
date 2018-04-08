@@ -7,24 +7,27 @@ In day to day Life we encounter the poor images clicked from our Camera due to p
 or handshaking motion while capturing the Images.
 
 `Blur is typically the thing which suppress the high frequency of our Images, therefore can be detected by using various low-pass filter
-eg. Laplacaian Filter. `
+eg. Laplacaian Filter.`
 
 As a smart person(myself a CS guy) we doesn't want to manually filter out the Clear and Blurred Images,
 so we need some smart way to delete the uneccessary Images.
 
 I also applied the Laplacian of gausssian filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to seggregate; despite results were also not fascinating.
+
 **Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/**
 
 Some of its discussions 
 https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image-is-blurry
+
 https://stackoverflow.com/questions/5180327/detection-of-blur-in-images-video-sequences
 
 LoG Ref: 
 http://academic.mu.edu/phys/matthysd/web226/Lab02.htm
+
 http://aishack.in/tutorials/sift-scale-invariant-feature-transform-log-approximation/
 
-Repo which implemented LoG filter in Python
+Repo which implemented LoG filter in Python:
 https://github.com/WillBrennan/BlurDetection2
 
 
@@ -43,29 +46,39 @@ Tuning ANN efficiently can provide me the results much better than CV TEchnique.
 Code are segmented as follows:
 
 1. Training Part :
+
     **train.py**
- 	which train the neural network with given images
- 	and stores the trained parameters and splitted train, test set to disk 
+    
+ 	`which train the neural network with given images
+ 	and stores the trained parameters and splitted train, test set to disk `
     
 2. Testing Part :
+
     __test.py__
- 	test the neural network with test data
- 	stored by train.py 
+    
+ 	`test the neural network with test data
+ 	stored by train.py `
 
 3. Predict Part :
+
     __predict.py__
-	predict the label of images(Good/Bad) 
-	provided by argument while calling
+    
+	`predict the label of images(Good/Bad) 
+	provided by argument while calling`
 
 4. Config File :
+
     __config.py__
-	contains list of constanst used by files
+    
+	`contains list of constanst used by files
 	or hyper-parameters which can be changed
-	byediting this file
+	by editing this file`
 	
 5. Utiltities Part :
+
     __utils.py__
-    	helper functions or coomon function among used in train, test
+    
+    	helper functions or common function among used in train, test
 	and predict
 
 `Model has 3 Layers`
