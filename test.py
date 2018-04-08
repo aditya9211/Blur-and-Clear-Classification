@@ -13,7 +13,6 @@ from utils import (model_score, path_validation)
 from config import (MODEL_PATH, TEST_DATA_PATH,
                     TEST_LABEL_PATH)
 
-
 def get_data():
     """
     Validating the Path and Extracting the Test Set

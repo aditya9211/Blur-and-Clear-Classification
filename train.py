@@ -5,13 +5,10 @@ And finally training the Neural Network model
 for the task of classifying blur and clear images.
 
 """
-
-# -*- coding: utf-8 -*-
-
 # Loading required Libraries
 from __future__ import print_function
 from config import *
-from utils import (h, sigmoid, validate,
+from utils import (h, sigmoid, validate, resize,
                     model_score, path_validation)
 import numpy as np
 import matplotlib.pyplot as plt
@@ -56,12 +53,10 @@ def data_preprocess(GOOD_IMG_PATH, BAD_IMG_PATH, radius=3):
 
     """
     print ('Pre-Processsing the Data...........\n')
-
     # Reading the Good Images 
     good_img = []
     for filename in os.listdir(GOOD_IMG_PATH):
         good_img.append(ms.imread(GOOD_IMG_PATH+filename, mode='L'))
-
     good_img = np.asarray(good_img)
 
     # Reading the Bad Images 
@@ -320,7 +315,6 @@ def back_propagate(theta1, theta2, train_images,
     # Intial dtheta values used for
     # momentum 
     dtheta1 , dtheta2 = 0.0, 0.0
-
     # One-Hot labelling the labels of data
     one_hot = output_encoding(train_labels, nclass)
 
@@ -335,14 +329,12 @@ def back_propagate(theta1, theta2, train_images,
     # Global Min Error term
     err = 100.0
 
-
     for epoch in np.arange(0,max_iter):
         # Used to print results of result summary
         k = 0
         print
         print ('\nOverall Min. Error rate : ' + str(err))
         print
-		
 		# Softmax in Final Layer 
         for batchX , batchY in get_batch(train_images,one_hot,batch_size):
             m, n = batchX.shape
@@ -375,7 +367,7 @@ def back_propagate(theta1, theta2, train_images,
                                         train_images, train_labels, act)
                 error = 100.0 - accuracy
 
-				## Error Updation if LEss Error is Discovered
+				# Error Updation if LEss Error is Discovered
                 if(error < err):
                     err = error
                     # Store the best theta of least error
@@ -384,13 +376,13 @@ def back_propagate(theta1, theta2, train_images,
                 
 				# Info of Learning of NN
                 print ("Epoch " + str(epoch+1) + " in " + str(k+1) + " iter"+ " | "
-                        "Train Error rate: " + str(error) + "%" + " | Batch loss: " + str(cost_epoch))
+                        "Train Error rate: " + str(error) + "%" + " | Batch loss: " 
+                        + str(cost_epoch))
  		    
             k = k + 1
             
     parameters = {'Theta1':best_theta1, 'Theta2':best_theta2, 'Loss':cost_list}
     return parameters
-        
         
 
 def get_batch(img, labels, batch_size):
@@ -479,8 +471,7 @@ def show_plot(cost, PLOT_PATH):
     if(path_validation(PLOT_PATH)):
         fig.savefig(PLOT_PATH)
     fig.clf()
-    
-   
+
 
 def main():
     """
@@ -517,7 +508,6 @@ def main():
         print ('\nModel Path Success .....\n')
 
 
-
     # Getting the Same Result in Shuffle in each Run.
     np.random.seed(SEED)
 
@@ -546,7 +536,6 @@ def main():
     no_of_neurons = train_images.shape[0]/(2*(train_images.shape[1]+10))
 
 
-
     # Intializing the Model
     theta = NN_Model([train_images.shape[1],NEURONS_SIZE,nclass])
 
@@ -563,11 +552,11 @@ def main():
     accuracy = model_score(params, test_images, test_labels, act=ACT) 
     print('\nAccuracy on Test Data: ', accuracy)
 
-    ## Storing the Results in tmp directory 
+    # Storing the Results in tmp directory 
     print ('\nSaving Results...............\n')
     joblib.dump(params, MODEL_PATH)
 
-    ## Plotting the Curve
+    # Plotting the Curve
     show_plot(params['Loss'], PLOT_PATH)
 
 

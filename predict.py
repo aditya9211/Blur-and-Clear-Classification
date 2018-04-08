@@ -5,7 +5,6 @@ It preprocess the image same as it
 was pre-processed in training 
 
 """
-
 import argparse
 from sklearn.externals import joblib
 import numpy as np
@@ -14,7 +13,6 @@ import scipy.ndimage as nd
 from utils import (resize, validate, path_validation)
 from config import (MODEL_PATH, WIDTH, HEIGHT,
                     RADIUS)
-
 
 def predict_preprocess(IMAGE_PATH):
     """
@@ -55,6 +53,7 @@ def main():
     Predict the label of images passed after 
     pre-process the images same as done in 
     training part
+    
     """
     # Construct the argument parser and parse the arguments
     ap = argparse.ArgumentParser()
@@ -64,13 +63,11 @@ def main():
 
     IMAGE_PATH = args["image_path"]
 
-
     # Path Validation of image and Model
     if not path_validation(IMAGE_PATH, read_access=True):
         exit(0)
     if not path_validation(MODEL_PATH, read_access=True):
         exit(0)
-
 
     # Preprocessed the images
     img = predict_preprocess(IMAGE_PATH)
