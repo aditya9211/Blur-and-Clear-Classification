@@ -1,64 +1,69 @@
+"""
+Script to test the NN Model
+on test data which splitted
+in train.py
+
+"""
+# -*- coding: utf-8 -*-
 import numpy as np
 import os
 import argparse
+from sklearn.externals import joblib
+from utils import (model_score, path_validation)
+from config import (MODEL_PATH, TEST_DATA_PATH,
+                    TEST_LABEL_PATH)
 
-## Sigmoid activation Function
-def sigmoid(X):
-    return 1.0 / (1.0 + np.exp(-X))
+def get_data():
+    """
+    Validating the Path and Extracting the Test Set
+    and trained theta parameters
 
-## Different Activaion Function
-def h(theta,X,func='sig'):
-    a = theta.dot(X.T)
-    if(func== 'tanh'):
-        return np.tanh(a)
-    if func == 'none':
-        return a
-    if func == 'softplus':
-        return np.log(1 + np.exp(a))
-    if func == 'relu':
-        return np.maximum(0.01*a, a)
-    
-    if func == 'softmax':
-        a1 = np.exp(a)
-        a1 = a1 / np.sum(a1, axis = 0, keepdims = True)
-        return a1
-    
-    return sigmoid(a)
+    @ Returns:
+    ----------
+    params: dict
+        Conatins the trained theta weights
+        used to calculate output of each layer 
+        by mutilpying it to each layer
+        act(input x theta1)
+        act(hidden x theta2) = output
+    test_images: np.array
+        Contains the test images
+    test_labels: np.array
+        Contains the labels(1/0)
+        corresponding to selected images
 
-def validate(theta1, theta2, X, act = 'sig'):
-    aa1 = h(theta1,X,act)
-    aa1 = np.insert(aa1, 0, 1, axis=0)
-    aa2 = h(theta2,aa1.T,'softmax')
-    accu_matrix = np.argmax(aa2,axis=0) 
-    return accu_matrix
+    """
+    if not path_validation(MODEL_PATH, read_access=True):
+        exit(0) 
+    if not path_validation(TEST_DATA_PATH, read_access=True):
+        exit(0) 
+    if not path_validation(TEST_LABEL_PATH, read_access=True):
+        exit(0) 
 
-## construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-model_dir", "--model_dir", required=False, help="path to model directory")
-args = vars(ap.parse_args())
+    params = joblib.load(MODEL_PATH)
+    test_images = np.load(TEST_DATA_PATH)
+    test_labels = np.load(TEST_LABEL_PATH)
 
-## Retrieving the Temp Folder for Result 
-if args["model_dir"]:
-  filename = args["model_dir"]+str("/")
-else:
-  filename = "/tmp/blur_clear/"
+    # Addition of bias in test set
+    test_images = np.insert(test_images, 0, 1, axis=1)
 
-if not os.path.exists(os.path.dirname(filename)):
-	print "No dir exists" + filename
-	exit()
+    return params, test_images, test_labels
 
-## Extracting the Info from Training Set Results from tmp dir
-params = np.load(filename + str("/result.npy"))
-test_images = np.load(filename + str("/test_images.npy"))
-test_labels = np.load(filename + str("/test_labels.npy"))
 
-## Rescalling the Inputs
-test_images = test_images/255.0
-test_images = np.insert(test_images, 0, 1, axis=1)
+def main():
+    """
+    Function to load the data
+    and calculate the test set
+    accuracy 
 
-## Predicting the Labels , Accuracy Score
-pred_y = validate(params[()]['Theta1'], params[()]['Theta2'], test_images)
-test_labels = test_labels.flatten()
+    """
+    # LOading the Test images & labels
+    params, test_images, test_labels = get_data()
 
-accuracy = np.mean(pred_y == test_labels)*100
-print 'Accuracy : ' + str(accuracy) + ' %'
+    # Accuracy on Test Data
+    accuracy = model_score(params, test_images, test_labels, act='sig')
+    print ('\nAccuracy : ' + str(accuracy) + ' %\n')
+
+
+if __name__ == "__main__":
+    main()
