@@ -15,7 +15,7 @@ so we need some smart way to delete the uneccessary Images.
 I also applied the Laplacian of gausssian(LoG) filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to differentiate images; despite that results were not fascinating.
 
-**Used variance LoG filter mentioned in https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/**
+Used variance of LoG filter mentioned in:  https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/
 
 Some of its discussions
 
@@ -54,7 +54,7 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 # Quick Start
 `Need the Images that are clear in separate folder and one with blurred in other folder.`
-```python
+```ruby
 
 # Clone the repo
 git clone https://github.com/aditya9211/Blur-and-Clear-Classification.git
