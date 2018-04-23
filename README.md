@@ -12,9 +12,9 @@ As a smart person(myself a CS guy) we doesn't want to manually filter out the Cl
 so we need some smart way to delete the uneccessary Images.
 
 ## LoG Filter
-I also applied the Laplacian of gausssian(LoG) filter to detect the blur images, but it was difficult to find
+I also applied the Laplacian of gausssian(**[LoG](http://academic.mu.edu/phys/matthysd/web226/Lab02.htm/)**) filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to differentiate images; despite that results were not fascinating.
-Used variance of LoG filter mentioned in:  https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/
+Used variance of **[LoG filter](https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/)**  mentioned in:  
 
 Some of its discussions
 
@@ -23,8 +23,6 @@ https://stackoverflow.com/questions/7765810/is-there-a-way-to-detect-if-an-image
 https://stackoverflow.com/questions/5180327/detection-of-blur-in-images-video-sequences
 
 LoG Ref: 
-
-http://academic.mu.edu/phys/matthysd/web226/Lab02.htm
 
 http://aishack.in/tutorials/sift-scale-invariant-feature-transform-log-approximation/
 
