@@ -14,7 +14,8 @@ so we need some smart way to delete the uneccessary Images.
 ## LoG Filter
 I also applied the Laplacian of gausssian(**[LoG](http://academic.mu.edu/phys/matthysd/web226/Lab02.htm/)**) filter to detect the blur images, but it was difficult to find
 exact value of threshold needed to differentiate images; despite that results were not fascinating.
-Used variance of **[LoG filter](https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/)**  mentioned in:  
+
+Used variance of **[LoG filter](https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/)**  
 
 Some of its discussions
 
