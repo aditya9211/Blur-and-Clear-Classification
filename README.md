@@ -54,8 +54,12 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 `Need the Images that are clear in the separate folder and one with blurred in another folder.`
 ```ruby
 
+# Python3+ user install Tkinter package
+sudo apt-get install python3-tk
 # Clone the repo
 git clone https://github.com/aditya9211/Blur-and-Clear-Classification.git
+# Change the working Directory
+cd Blur-and-Clear-Classification/
 # Install the requirements
 pip install -r requirements.txt
 # Train the Network
@@ -104,4 +108,9 @@ Code is segmented as follows:
 	__utils.py__
     		
 	`helper functions or common function among used in train/test and predict`
+
+6: Requirement Package :
+	__requirements.txt__
+	
+	`packages required for running scripts`
 	
