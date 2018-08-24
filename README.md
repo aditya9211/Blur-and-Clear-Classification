@@ -86,7 +86,7 @@ Code is segmented as follows:
 	__test.py__
    
  	`test the neural network with test data
- 	stored by train.py `
+ 	stored by train.py`
 
 3. Predict Part :
 
@@ -108,8 +108,9 @@ Code is segmented as follows:
 	__utils.py__
     		
 	`helper functions or common function among used in train/test and predict`
+	
+6. Requirement Package :
 
-6: Requirement Package :
 	__requirements.txt__
 	
 	`packages required for running scripts`
