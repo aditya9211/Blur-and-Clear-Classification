@@ -2,18 +2,18 @@
 ## Classifying the Blur and Clear Images
 
 ### Introduction
-In day to day Life we encounter the poor images clicked from our Camera due to poor focus, motion of objects in frame
+In day to day Life, we encounter the poor images clicked from our Camera due to poor focus, a motion of objects in the frame
 or handshaking motion while capturing the Images.
 
-`Blur is typically the thing which suppress the high frequency of our Images, therefore can be detected by using various low-pass filter
-eg. Laplacaian Filter.`
+`Blur is typically the thing which **suppress the high-frequency** of our Images, therefore can be detected by using various low-pass filter
+eg. Laplacian Filter.`
 
 As a smart person(myself a CS guy) we doesn't want to manually filter out the Clear and Blurred Images,
-so we need some smart way to delete the uneccessary Images.
+so we need some smart way to delete the unnecessary Images.
 
 ## LoG Filter
-I also applied the Laplacian of gausssian(**[LoG](http://academic.mu.edu/phys/matthysd/web226/Lab02.htm/)**) filter to detect the blur images, but it was difficult to find
-exact value of threshold needed to differentiate images; despite that results were not fascinating.
+I also applied the Laplacian of gaussian(**[LoG](http://academic.mu.edu/phys/matthysd/web226/Lab02.htm/)**) filter to detect the blur images, but it was difficult to find the
+exact value of the threshold needed to differentiate images; despite that results were not fascinating.
 
 Used variance of **[LoG filter](https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/)**  
 
@@ -31,7 +31,7 @@ Repo which implemented LoG filter in Python:
 https://github.com/WillBrennan/BlurDetection2
 
 
-`As the Now the era of Deep Conv Nets has supressed the Standard Computer Vision Techniques, 
+`As the Now, the era of Deep Conv Nets has suppressed the Standard Computer Vision Techniques, 
 Thus I focussed on the root of it which is Neural Nets.`
 `Neural Nets learn very Quickly the complex features, therefore can be used much easily then std. CV technique.
 Tuning ANN efficiently can provide me the results much better than CV TEchnique.`
@@ -51,7 +51,7 @@ Rescaled the Images to 100 x 100 Pixels in Grayscale Coding and done median filt
 
 
 # Quick Start
-`Need the Images that are clear in separate folder and one with blurred in other folder.`
+`Need the Images that are clear in the separate folder and one with blurred in another folder.`
 ```ruby
 
 # Clone the repo
@@ -68,7 +68,7 @@ python predict.py --img '/home/....../laptop.png'
 ```
 
 ## Code Structure
-Code are segmented as follows:
+Code is segmented as follows:
 
 1. Training Part :
 
@@ -95,7 +95,7 @@ Code are segmented as follows:
 
 	__config.py__
     
-	`contains list of constanst used by files
+	`contains the list of constant used by files
 	or hyper-parameters which can be changed
 	by editing this file`
 	
