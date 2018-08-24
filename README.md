@@ -102,6 +102,6 @@ Code is segmented as follows:
 5. Utiltities Part :
 
 	__utils.py__
-    
-    	helper functions or common function among used in train/test and predict
+    		
+	`helper functions or common function among used in train/test and predict`
 	
